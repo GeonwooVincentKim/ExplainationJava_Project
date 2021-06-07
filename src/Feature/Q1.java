@@ -174,7 +174,7 @@ public class Q1 {
         fileWriter(fManager, fileName, getData);
     }
 
-    // Q1 파일 안에 있는 모든 함수들을
+    // Q1 파일 안에 있는 모든 함수들을 관리한다.
     public static void q1_main(int selectMenu) {
         File file = null;
         Scanner fileReader = null;
