@@ -22,9 +22,20 @@ public class Q2 {
         return (int) (Math.random() * (n2 - n1 + 1)) + n1;
     }
 
+    /*  */
     // getModeArray 에서 modeArray 를 생성하기 전, getData 에서 randomArray 배열의 크기를 사용자 지정 배열
     // 길이 값인 getValue 만큼 getModeArray 를 할당받는다.
+    public static int[] modeArray(int[] randomArray) {
+        int[] modeArray = new int[randomArray.length];
 
+        for (int i = 0; i < randomArray.length; i++) {
+            modeArray[i] = randomArray[i];
+        }
+
+        return modeArray;
+    }
+
+    /* 중복을 포함한 배열을 가지고 있는 getRandomArray */
     // randomRange 의 범위 값, getData 의 getValue 값들을 각각 넘겨 받고, getValue 의 값만큼
     // randomArray 의 길이를 지정받은 후, randomRange 의 범위만큼 getRandomArray 함수의
     // getRandomArray 배열 안에 값을 순차적으로 지정해준다.
@@ -38,7 +49,7 @@ public class Q2 {
         return getRandomArray;
     }
 
-    // getRandomArray 의 randomArray 배열을 넘겨받아서 loopResult
+    // getRandomArray 의 randomArray 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
     public static String printRandomArray(int[] randomArray) {
         String loopResult = "";
 
