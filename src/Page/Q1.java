@@ -1,4 +1,4 @@
-package Feature;
+package Page;
 
 import static java.lang.System.out;
 
@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-import FileManager.FileManager;
+import Feature.FileManager.FileManager;
 
 public class Q1 {
     public static Scanner fileReader(FileManager fManager, String fileName) {

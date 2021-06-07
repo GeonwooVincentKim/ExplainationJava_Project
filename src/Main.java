@@ -1,8 +1,8 @@
+import static Page.Q1.q1_main;
+import static Page.Q2.q2_main;
 import static java.lang.System.out;
 
 import java.util.Scanner;
-import static Feature.Q1.q1_main;
-import static Feature.Q2.q2_main;
 
 public class Main {
     public static void main(String[] args) {

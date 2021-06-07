@@ -1,4 +1,4 @@
-package FileManager;
+package Feature.FileManager;
 
 import java.io.File;
 import java.io.FileWriter;
