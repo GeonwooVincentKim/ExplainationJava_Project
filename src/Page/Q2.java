@@ -4,6 +4,8 @@ import static java.lang.System.out;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Feature.FileManager.FileManager;
@@ -39,6 +41,15 @@ public class Q2 {
     // randomRange 의 범위 값, getData 의 getValue 값들을 각각 넘겨 받고, getValue 의 값만큼
     // randomArray 의 길이를 지정받은 후, randomRange 의 범위만큼 getRandomArray 함수의
     // getRandomArray 배열 안에 값을 순차적으로 지정해준다.
+    public static List<Integer> getRandomArray(List<Integer> randomArray) {
+        List<Integer> getRandomArray = new ArrayList<>(randomArray.size());
+
+        for (int i = 0; i < getRandomArray.size(); i++) {
+            // getRandomArray.get(i) = (randomRange(11, 99);
+        }
+        return randomArray;
+    }
+
     public static int[] getRandomArray(int[] randomArray) {
         int getRandomArray[] = new int[randomArray.length];
 
