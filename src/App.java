@@ -28,7 +28,7 @@ public class App {
         out.println();
 
         for (int i = 0; i < cntArr.size(); i++) {
-            out.print(cntArr.get(i) + " ");
+            out.print(cntArr.get(i) + " - ");
         }
 
         out.println();
@@ -44,7 +44,33 @@ public class App {
         return setResult;
     }
 
+    // getRandomArray 의 크기만큼 할당받은 randomList 의 값들은 main 으로부터 값을 넘겨받는다.
+    public static int[] getRandomList(int[] getRandomArray) {
+        int getRandomList[] = new int[getRandomArray.length];
+
+        for (int i = 0; i < getRandomList.length; i++) {
+            getRandomList[i] = (int) (Math.random() * (99 - 11 + 1)) + 11;
+        }
+
+        return getRandomList;
+    }
+
+    // getRandomList 안에 있는 데이터들을 모두 List<Integer> 형의 randomList 에 삽입한다.
+    public static List<Integer> addRandomList(int[] getRandomArray) {
+        List<Integer> randomList = new ArrayList<Integer>();
+
+        for (int i = 0; i < getRandomArray.length; i++) {
+            randomList.add(getRandomArray[i]);
+            out.print(randomList.get(i) + " ");
+        }
+
+        return randomList;
+    }
+
+    // countList 안에
+
     public static void main(String[] args) throws Exception {
+        String result = ""; // 결과 값을 저장한다.
         int randomValue = 20; // 랜덤 길이는 20으로 설정한다.
         int printValue = 5; // 출력할 개수를 정한다.
         // int countValue = 0; // 여러 번 나오는 수의 빈도 값을 저장한다.
@@ -52,8 +78,8 @@ public class App {
         // int temp = 0;
         int[] temp = new int[randomValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
         List<Integer> randomList = new ArrayList<Integer>();
-        // List<Integer> countList = new ArrayList<Integer>();
-        List<Integer> countList = new CustomArrayList<Integer>();
+        List<Integer> countList = new ArrayList<Integer>();
+        // List<Integer> countList = new CustomArrayList<Integer>();
         List<Integer> testList = new CustomArrayList<Integer>();
         ArrayListTest arTest = new ArrayListTest();
 
@@ -81,8 +107,28 @@ public class App {
         // i 와 j 두 개를 만들어놓고, 각각 randomList 라는 ArrayList 에서 겹치는 수 확인 후,
         // count 값에 저장한다.
         int mode = 0;
+        int count = 0;
+
         // for (int i = 0; i < randomValue; i++) {
-        for (int i = 0; i < temp.length; i++) {
+        for (int i = 0; i < randomList.size(); i++) {
+            // for (int j = i + 1; j < randomList.size(); j++) {
+            // if (countList.get(j) == countList.get(j)) {
+            // // countList.get(j) = null;
+            // // count = -1;
+            // count = countList.get(j);
+            // count = -1;
+            // }
+            // }
+
+            // for (int j = 0; j < randomList.size(); j++) {
+            // if (i == j) {
+            // // countList.add(temp[i]);
+            // } else if (randomList.get(j).equals(randomList.get(i))) {
+            // randomList.remove(j);
+            // countList.add(randomList.get(i));
+            // }
+            // }
+
             // for (int j = i + 1; j < randomValue; j++) {
             // if (countList.get(j) == randomList.get(i)) {
             // countList.add(temp[i]);
@@ -91,19 +137,46 @@ public class App {
             // if (countList.equals(temp)) {
 
             // }
+
+            // Original Code
             if (!countList.contains(temp[i])) {
                 countList.add(temp[i]);
             }
-            // int count = 0;
-            // for (int j = 0; j < temp.length; j++) {
+
+            // if (count >= 0) {
+            // for (int j = 0; j < randomList.size(); j++) {
             // if (randomList.get(i) == randomList.get(j)) {
             // count++;
+            // // if (randomList.get(i) > randomList.get(j)) {
+            // // // mode = count;
             // countList.add(temp[j]);
+
+            // // if (count > 0) {
+            // // countList.remove(temp[j]);
+            // // }
+
+            // // }
             // // countList.add(randomList.get(j));
             // // randomList.remove(j);
-            // } else {
             // }
             // // countList.add(temp[i]);
+            // }
+            // } else {
+
+            // }
+            // if (count > 0) {
+            // // countList.add(temp[i]);
+            // countList.remove(temp[i]);
+            // i--;
+            // }
+            // if (count > 1) {
+            // countList.add(temp[i]);
+            // for (int k = 0; k < randomList.size(); k++) {
+            // if (randomList.get(i) == randomList.get(k) && i != k) {
+            // randomList.remove(k);
+            // k--;
+            // }
+            // }
             // }
             // if (randomList.get(i) > 0) {
             // countList.remove(i);
@@ -133,6 +206,12 @@ public class App {
 
             // out.print(count + " ");
         }
+
+        // for (int i = 0; i < randomList.size(); i++) {
+        // if (countList.get(i) != -1) {
+
+        // }
+        // }
 
         out.println();
 
@@ -187,9 +266,9 @@ public class App {
         // // out.print(Bindo + " ");
         // }
         // }
-        printArray(randomList, countList, printValue);
+        result = printArray(randomList, countList, printValue);
 
-        out.println();
+        out.println(result);
 
         // for (int i = 0; i < countList.size(); i++) {
         // out.print("#" + (i + 1) + " " + countList.get(i));

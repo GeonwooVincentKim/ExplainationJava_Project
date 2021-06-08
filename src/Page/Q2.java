@@ -50,11 +50,15 @@ public class Q2 {
         return randomArray;
     }
 
+    // 1. randomRange 의 범위 값, getData 의 getValue 값들을 각각 넘겨 받고, getValue 의 값만큼
+    // randomArray 의 길이를 지정받은 후, randomRange 의 범위만큼 getRandomArray 함수의
+    // getRandomArray 배열 안에 값을 순차적으로 지정해준다.
     public static int[] getRandomArray(int[] randomArray) {
         int getRandomArray[] = new int[randomArray.length];
 
         for (int i = 0; i < getRandomArray.length; i++) {
             getRandomArray[i] = randomRange(11, 99);
+            out.print(getRandomArray[i] + " | ");
         }
 
         return getRandomArray;
@@ -66,15 +70,53 @@ public class Q2 {
         return getCountArray;
     }
 
-    public static int[] getCountArray(int[] randomArray, int[] countArray) {
-        int[] getRandomArray = getRandomArray(randomArray);
+    // 3. 배열 내 빈도수를 세는 getCountArray 가 randomArray 배열을 넘겨 받아 getCountArray 에 저장한다.
+    public static int[] getCountArray(int[] countArray) {
+        // int[] getRandomArray = getRandomArray(countArray);
+        int[] o = new int[countArray.length];
         for (int i = 0; i < countArray.length; i++) {
+            o[i] = Integer.valueOf(countArray[i]);
 
+            // for (int j = 0; j < i; j++) {
+            // if (getRandomArray[i] == randomArray[i]) {
+            // i--;
+            // break;
+            // }
+            // }
+            // getRandomArray[i] = randomArray[i];
+            // for (int j = i + 1; j < randomArray.length; j++) {
+            // if (randomArray[i] == randomArray[j]) {
+            // getRandomArray[i]++;
+            // }
+            // }
+            out.print(countArray[i] + " < ");
+            out.print(countArray[i] + " > ");
         }
-        return null;
+
+        for (int i = 0; i < countArray.length; i++) {
+            for (int j = i + 1; j < countArray.length; j++) {
+                if (o[i] == o[j]) {
+                    o[j] = -1;
+                }
+            }
+        }
+
+        for (int i = 0; i < countArray.length; i++) {
+            if (o[i] != -1) {
+                out.print(o[i] + " ");
+            }
+        }
+
+        // for (int i = 0; i < countArray.length; i++) {
+        // if (countArray[i] == -1) {
+        // out.print(countArray[i] + " - ");
+        // }
+        // }
+
+        return countArray;
     }
 
-    // getRandomArray 의 randomArray 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
+    // 2. getRandomArray 의 randomArray 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
     public static String printRandomArray(int[] randomArray) {
         String loopResult = "";
 
@@ -85,7 +127,7 @@ public class Q2 {
         return loopResult;
     }
 
-    //
+    // 4. 배열
 
     public static String getData(int getValue) {
         // 1. 숫자 N 을 입력받을 때, q2_main 에서 임의의 정수 T 의 크기만큼 입력을 받는다.
@@ -97,9 +139,13 @@ public class Q2 {
         int countArray[] = new int[getValue]; // randomArray 의 중복된 값들을 제거한 후, 중복되지 않는 값들 만을 저장하는 배열
 
         randomArray = getRandomArray(randomArray);
+        out.println();
+
         loopResult = printRandomArray(randomArray);
-        countArray = getCountArray(randomArray, countArray);
         out.println(loopResult);
+
+        countArray = getCountArray(randomArray);
+        out.println(countArray);
 
         result = loopResult + "\n";
 
