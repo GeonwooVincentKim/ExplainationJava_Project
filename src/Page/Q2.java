@@ -60,6 +60,20 @@ public class Q2 {
         return getRandomArray;
     }
 
+    public static List<Integer> getCountArray(List<Integer> countArray) {
+        List<Integer> getCountArray = new ArrayList<>(countArray.size());
+
+        return getCountArray;
+    }
+
+    public static int[] getCountArray(int[] randomArray, int[] countArray) {
+        int[] getRandomArray = getRandomArray(randomArray);
+        for (int i = 0; i < countArray.length; i++) {
+
+        }
+        return null;
+    }
+
     // getRandomArray 의 randomArray 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
     public static String printRandomArray(int[] randomArray) {
         String loopResult = "";
@@ -71,16 +85,21 @@ public class Q2 {
         return loopResult;
     }
 
+    //
+
     public static String getData(int getValue) {
         // 1. 숫자 N 을 입력받을 때, q2_main 에서 임의의 정수 T 의 크기만큼 입력을 받는다.
         // 2. randomArray 를 선언하여 입력받은 숫자 N의 데이터들 (중복 되는 데이터 또한 포함) 모두 포함하여 저장한다.
         // 3. modeArray 를 선언하여 randomArray 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
         String result = "";
         String loopResult = ""; // printRandomArray 의 randomArray 의 내부 배열 값을 출력
-        int randomArray[] = new int[getValue];
+        int randomArray[] = new int[getValue]; // random 값들을 받는 int 배열
+        int countArray[] = new int[getValue]; // randomArray 의 중복된 값들을 제거한 후, 중복되지 않는 값들 만을 저장하는 배열
 
         randomArray = getRandomArray(randomArray);
         loopResult = printRandomArray(randomArray);
+        countArray = getCountArray(randomArray, countArray);
+        out.println(loopResult);
 
         result = loopResult + "\n";
 
