@@ -107,12 +107,6 @@ public class Q2 {
             }
         }
 
-        // for (int i = 0; i < countArray.length; i++) {
-        // if (countArray[i] == -1) {
-        // out.print(countArray[i] + " - ");
-        // }
-        // }
-
         return countArray;
     }
 
@@ -126,8 +120,6 @@ public class Q2 {
 
         return loopResult;
     }
-
-    // 4. 배열
 
     public static String getData(int getValue) {
         // 1. 숫자 N 을 입력받을 때, q2_main 에서 임의의 정수 T 의 크기만큼 입력을 받는다.
