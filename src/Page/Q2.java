@@ -73,9 +73,9 @@ public class Q2 {
     // 3. 배열 내 빈도수를 세는 getCountArray 가 randomArray 배열을 넘겨 받아 getCountArray 에 저장한다.
     public static int[] getCountArray(int[] countArray) {
         // int[] getRandomArray = getRandomArray(countArray);
-        int[] o = new int[countArray.length];
+        // int[] o = new int[countArray.length];
         for (int i = 0; i < countArray.length; i++) {
-            o[i] = Integer.valueOf(countArray[i]);
+            // o[i] = Integer.valueOf(countArray[i]);
 
             // for (int j = 0; j < i; j++) {
             // if (getRandomArray[i] == randomArray[i]) {
@@ -95,18 +95,26 @@ public class Q2 {
 
         for (int i = 0; i < countArray.length; i++) {
             for (int j = i + 1; j < countArray.length; j++) {
-                if (o[i] == o[j]) {
-                    o[j] = -1;
+                // if (o[i] == o[j]) {
+                // o[j] = -1;
+                // }
+                if (countArray[i] == countArray[j]) {
+                    countArray[j] = -1;
                 }
             }
         }
 
         for (int i = 0; i < countArray.length; i++) {
-            if (o[i] != -1) {
-                out.print(o[i] + " ");
+            // if (o[i] != -1) {
+            // // countArray[i] = o[i];
+            // out.print(o[i] + " ");
+            // }
+            if (countArray[i] != -1) {
+                out.print(countArray[i] + " ");
             }
         }
 
+        // return o;
         return countArray;
     }
 
@@ -139,7 +147,7 @@ public class Q2 {
         countArray = getCountArray(randomArray);
         out.println(countArray);
 
-        result = loopResult + "\n";
+        result = loopResult + "\n" + countArray + "\n";
 
         return result;
     }
