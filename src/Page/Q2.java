@@ -90,6 +90,7 @@ public class Q2 {
             // }
             // }
             out.print(countArray[i] + " < ");
+            out.println();
             out.print(o[i] + " > ");
         }
 
@@ -97,6 +98,9 @@ public class Q2 {
             for (int j = i + 1; j < countArray.length; j++) {
                 if (o[i] == o[j]) {
                     o[j] = -1;
+                    // if(o[j] == -1){
+
+                    // }
                 }
                 // if (countArray[i] == countArray[j]) {
                 // countArray[j] = -1;
@@ -129,7 +133,124 @@ public class Q2 {
         return loopResult;
     }
 
+    // 4. countArray 배열을 넘겨받은 후, countArray 배열의 빈도수를 찾음과 동시에 특정 숫자의 빈도 수와
+    // 전체 배열을 각각의 기준에 따라 정렬한다.
+    public static int[] sortCountArray(int[] randomArray, int[] countArray) {
+        int currentValue = 0; // 현재 값
+        int currentCount = 0; // 현재 값의 빈도 수
+        int nextValue = 0; // 다음 값
+        int nextCount = 0; // 다음 값의 빈도 수
+
+        // int[] countArray = getCountArray(randomArray);
+
+        out.println();
+
+        for (int i = 0; i < countArray.length; i++) {
+            for (int j = i + 1; j < countArray.length; j++) {
+                currentValue = countArray[i];
+                nextValue = countArray[j];
+
+                // if (currentValue < nextValue) {
+                // bubbleArraySort(countArray, currentValue, nextValue);
+                // bubbleArraySort()
+                // }
+                currentCount = arrayFrequency(randomArray, currentValue);
+                nextCount = arrayFrequency(randomArray, nextValue);
+
+                // int tempValue = 0;
+                // if (currentCount < nextCount) {
+                // // // out.print(currentCount + " ");
+                // // out.print(nextCount + " ");
+
+                // bubbleArraySort(currentValue, nextValue);
+                // // // // bubbleSort(countArray, tempValue, currentValue, nextValue, i, j);
+                // // // bubbleArraySort(countArray, currentValue, nextValue);
+                // // // // bubbleArraySort(countArray, currentCount, nextCount);
+                // } else if (currentCount == nextCount && currentValue < nextValue) {
+                // // out.print(nextCount + " ");
+                // bubbleArraySort(currentValue, nextValue);
+                // // // // bubbleSort(countArray, tempValue, currentValue, nextValue, i, j);
+                // // // bubbleArraySort(countArray, currentValue, nextValue);
+                // // // // bubbleArraySort(countArray, currentCount, nextCount);
+                // }
+            }
+        }
+
+        return countArray;
+    }
+
+    // 5. getRandomArray 에서의 특정 숫자의 빈도수와 getCountArray 에서의 특정 숫자의 빈도수를 확인하여
+    // 각각 수가 출현할 때마다 count 의 수를 1씩 늘려준다.
+    public static int arrayFrequency(int[] randomArray, int number) {
+        int count = 0;
+
+        for (int i = 0; i < randomArray.length; i++) {
+            if (randomArray[i] == number) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    // 6. countArray 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
+    public static void bubbleSort(int[] countArray, int tempValue, int currentValue, int nextValue, int i, int j) {
+        tempValue = currentValue;
+
+    }
+
+    // 6. countArray 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
+    public static void bubbleArraySort(int[] getArray, int currentValue, int nextValue) {
+        int tempValue = getArray[currentValue];
+        getArray[currentValue] = getArray[nextValue];
+        getArray[nextValue] = tempValue;
+    }
+
+    // 6. countArray 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
+    // public static void bubbleArraySort(int currentValue, int nextValue) {
+    // int tempValue = currentValue;
+    // currentValue = nextValue;
+    // nextValue = tempValue;
+    // }
+
+    // 7. sortCountArray 의 Array 값들을 불러온다.
+    public static String getResult(int printT, int[] randomArray, int[] countArray) {
+        String result;
+        sortCountArray(randomArray, countArray);
+
+        result = printArray(randomArray, countArray, printT) + " ";
+        return result;
+    }
+
+    // 8. 전체 배열들을 출력한디.
+    public static String printArray(int[] randomArray, int[] countArray, int printCount) {
+        String setResult = "";
+
+        // 랜덤 배열 목록을 출력한다.
+        for (int i = 0; i < randomArray.length; i++) {
+            out.print(randomArray[i] + " ");
+            setResult += randomArray[i] + " ";
+        }
+
+        out.println();
+
+        // 빈도 값을 count 하는 배열의 목록들을 출력한다.
+        for (int i = 0; i < countArray.length; i++) {
+            out.print(countArray[i] + " ");
+        }
+
+        // 랜덤 배열 최빈도 수 내림차순 출력
+        for (int i = 0; i < printCount; i++) {
+            out.print("#" + (i + 1) + " " + countArray[i]);
+            out.println(" (" + arrayFrequency(randomArray, countArray[i]) + ")");
+            setResult += "#" + (i + 1) + " " + countArray[i] + "\n";
+        }
+
+        return setResult;
+    }
+
     public static String getData(int getValue) {
+        int printT = 5;
         // 1. 숫자 N 을 입력받을 때, q2_main 에서 임의의 정수 T 의 크기만큼 입력을 받는다.
         // 2. randomArray 를 선언하여 입력받은 숫자 N의 데이터들 (중복 되는 데이터 또한 포함) 모두 포함하여 저장한다.
         // 3. modeArray 를 선언하여 randomArray 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
@@ -146,6 +267,10 @@ public class Q2 {
 
         countArray = getCountArray(randomArray);
         out.println();
+
+        // sortCountArray(randomArray);
+
+        // result = getResult(printT, randomArray, countArray);
 
         result = loopResult + "\n" + countArray + "\n";
 

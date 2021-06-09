@@ -17,6 +17,32 @@ public class App {
         return count;
     }
 
+    public boolean isContains(Object o, int[] getRandomArray) {
+        int[] elementData = getRandomList(getRandomArray);
+        if (o == null) {
+            for (int i = 0; i < elementData.length; i++) {
+                if (o == null) {
+                    return true;
+                }
+            }
+        } else {
+            for (int i = 0; i < elementData.length; i++) {
+                if (o.equals(elementData[i])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean contains(CharSequence sequence) {
+        return indexOf(sequence.toString()) > -1;
+    }
+
+    private int indexOf(String string) {
+        return 0;
+    }
+
     public static String printArray(List<Integer> randArr, List<Integer> cntArr, int printCnt) {
         String setResult = "";
 
