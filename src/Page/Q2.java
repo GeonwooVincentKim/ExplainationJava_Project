@@ -103,7 +103,6 @@ public class Q2 {
                 currentCount = arrayFrequency(randomArray, currentValue);
                 nextCount = arrayFrequency(randomArray, nextValue);
 
-                // int tempValue = 0;
                 if (currentCount < nextCount) {
                     bubbleSort(randomArray, i, j);
                     bubbleSort(countArray, i, j);
