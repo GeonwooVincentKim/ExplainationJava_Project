@@ -205,9 +205,9 @@ public class Q2 {
         return result;
     }
 
-    // 9. fileWriter 에서 파일을 작성하기 전, getResult 에서 file 입력 값을 미리 받아 놓고, fileWriter 를
+    // 9. fileWriter 에서 파일을 작성하기 전, getFile 에서 file 입력 값을 미리 받아 놓고, fileWriter 를
     // 이용하여 출력한다.
-    public static void getResult(FileManager fManager, int loopResult, String fileName) {
+    public static void getFile(FileManager fManager, int loopResult, String fileName) {
         String getResult = getData(loopResult);
         writeFile(fManager, fileName, getResult);
     }
@@ -230,11 +230,11 @@ public class Q2 {
         if (selectQ2MainNum == 1) {
             fileReader = fileReader(fManager, readFileName);
             int getValue = Integer.parseInt(fileReader.nextLine());
-            getResult(fManager, getValue, writeFileName);
+            getFile(fManager, getValue, writeFileName);
         } else if (selectQ2MainNum == 2) {
             fileReader = new Scanner(System.in);
             int getValue = fileReader.nextInt();
-            getResult(fManager, getValue, writeFileName);
+            getFile(fManager, getValue, writeFileName);
         } else {
             out.println("프로그램을 종료합니다");
             System.exit(0);
