@@ -6,27 +6,18 @@ import static java.lang.System.out;
 public class ArrayListTest {
     // private static int arrayIndexOfRange;
 
-    public static int arrayIndexOfRange(Object o, int[] temp, int start, int end) {
-        for (int i = 0; i < end; i++) {
-            if (o.equals(temp[i])) {
-                return i;
+    public static boolean isContains(List<Integer> countList, int number) {
+        boolean result = false;
+
+        for (int i = 0; i < countList.size(); i++) {
+            if (countList.get(i) == number) {
+                result = true;
+                return result;
             }
         }
 
-        return -1;
+        return result;
     }
-
-    public static int arrayIndexOf(Object o) {
-        return arrayIndexOfRange(o, null, 0, 0);
-    }
-
-    public static boolean isContain(Object o) {
-        return arrayIndexOf(o) >= 0;
-    }
-
-    // public int indexOf(Object o){
-    // return indexOfRange(o, 0, size);
-    // }
 
     public static List<Integer> addToList(int[] temp, List<Integer> originalList) {
         for (int i = 0; i < temp.length; i++) {
@@ -60,10 +51,7 @@ public class ArrayListTest {
 
     public static List<Integer> getCountList(int[] temp, List<Integer> countList) {
         for (int i = 0; i < temp.length; i++) {
-            // arrayIndexOfRange = ArrayListTest.arrayIndexOfRange(temp[i], temp, i,
-            // temp.length);
-            // countList.arrayIndexOf
-            if (!countList.contains(temp[i])) {
+            if (!(isContains(countList, temp[i]))) {
                 countList.add(temp[i]);
             }
         }
