@@ -145,8 +145,10 @@ public class Q2 {
     }
 
     // 7. sortCountArray 의 Array 값들을 불러온다.
-    public static String getResult(int printT, int[] randomArray, int[] countArray) {
+    public static String getResult(int[] randomArray) {
+        int printT = 5;
         String result;
+        int[] countArray = getCountArray(randomArray);
         sortCountArray(randomArray, countArray);
 
         result = printArray(randomArray, countArray, printT) + " ";
@@ -183,25 +185,25 @@ public class Q2 {
     }
 
     public static String getData(int getValue) {
-        int printT = 5;
+        // int printT = 5;
         // 1. 숫자 N 을 입력받을 때, q2_main 에서 임의의 정수 T 의 크기만큼 입력을 받는다.
         // 2. randomArray 를 선언하여 입력받은 숫자 N의 데이터들 (중복 되는 데이터 또한 포함) 모두 포함하여 저장한다.
         // 3. isContains 를 선언하여 randomArray 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
         String result = "";
         String loopResult = ""; // printRandomArray 의 randomArray 의 내부 배열 값을 출력
         int randomArray[] = new int[getValue]; // random 값들을 받는 int 배열
-        int countArray[] = new int[getValue]; // randomArray 의 중복된 값들을 제거한 후, 중복되지 않는 값들 만을 저장하는 배열
-
         randomArray = getRandomArray(randomArray);
         out.println();
 
         loopResult = printRandomArray(randomArray);
         out.println(loopResult);
 
-        countArray = getCountArray(randomArray);
+        getCountArray(randomArray);
         out.println();
 
-        result = getResult(printT, randomArray, countArray);
+        // result = getResult(printT, randomArray, countArray);
+        // result = getResult(printT, randomArray);
+        result = getResult(randomArray);
         return result;
     }
 
