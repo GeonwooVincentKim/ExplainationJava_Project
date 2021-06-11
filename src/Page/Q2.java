@@ -87,7 +87,7 @@ public class Q2 {
 
     // 4. countArray 배열을 넘겨받은 후, countArray 배열의 빈도수를 찾음과 동시에 특정 숫자의 빈도 수와
     // 전체 배열을 각각의 기준에 따라 정렬한다.
-    public static int[] sortCountArray(int[] randomArray, int[] countArray) {
+    public static int[] getSortCountArray(int[] randomArray, int[] countArray) {
         int currentValue = 0; // 현재 값
         int currentCount = 0; // 현재 값의 빈도 수
         int nextValue = 0; // 다음 값
@@ -149,30 +149,19 @@ public class Q2 {
         int printT = 5;
         String result;
         int[] countArray = getCountArray(randomArray);
-        sortCountArray(randomArray, countArray);
+        int[] sortCountArray = getSortCountArray(randomArray, countArray);
 
-        result = printArray(randomArray, countArray, printT) + " ";
+        // printArray 의 값을 가져와 모든 값들을 출력 및 파일로 만들 result String 변수에 저장한다.
+        // result = printArray(randomArray, countArray, printT) + " ";
+        // result = printArray(printT, sortCountArray) + " ";
+        // result = printArray(printT, sortCountArray, countArray) + " ";
+        result = printArray(printT, sortCountArray, randomArray, countArray) + " ";
         return result;
     }
 
     // 8. 전체 배열들을 출력한디.
     public static String printArray(int[] randomArray, int[] countArray, int printCount) {
         String setResult = "";
-
-        // 랜덤 배열 목록을 출력한다.
-        // for (int i = 0; i < randomArray.length; i++) {
-        // out.print(randomArray[i] + " ");
-        // setResult += randomArray[i] + " ";
-        // }
-
-        // out.println();
-
-        // // 빈도 값을 count 하는 배열의 목록들을 출력한다.
-        // for (int i = 0; i < countArray.length; i++) {
-        // out.print(countArray[i] + " ");
-        // }
-
-        out.println();
 
         // 랜덤 배열 최빈도 수 내림차순 출력
         for (int i = 0; i < printCount; i++) {
@@ -184,15 +173,25 @@ public class Q2 {
         return setResult;
     }
 
+    public static String printArray(int printValue, int[] sortCountArray, int[] randomArray, int[] countArray) {
+        String getResult = "";
+
+        for (int i = 0; i < printValue; i++) {
+            getResult += "#" + (i + 1) + " " + sortCountArray[i] + " (" + arrayFrequency(randomArray, countArray[i])
+                    + ")" + "\n";
+        }
+
+        return getResult;
+    }
+
     public static String getData(int getValue) {
-        // int printT = 5;
+        int printT = 5;
         // 1. 숫자 N 을 입력받을 때, q2_main 에서 임의의 정수 T 의 크기만큼 입력을 받는다.
         // 2. randomArray 를 선언하여 입력받은 숫자 N의 데이터들 (중복 되는 데이터 또한 포함) 모두 포함하여 저장한다.
         // 3. isContains 를 선언하여 randomArray 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
         String result = "";
         String loopResult = ""; // printRandomArray 의 randomArray 의 내부 배열 값을 출력
         int randomArray[] = new int[getValue]; // random 값들을 받는 int 배열
-        int countArray[] = new int[getValue];
 
         randomArray = getRandomArray(randomArray);
         out.println();
@@ -200,12 +199,16 @@ public class Q2 {
         loopResult = printRandomArray(randomArray);
         out.println(loopResult);
 
-        countArray = getCountArray(randomArray);
+        int[] countArray = getCountArray(randomArray);
         out.println();
 
-        // result = getResult(printT, randomArray, countArray);
-        // result = getResult(printT, randomArray);
-        result = loopResult + "\n" + getResult(randomArray);
+        // getSortCountArray 는 빈도 수가 많음과 동시에 가장 큰 수대로 함께 정렬하는 함수이다.
+        int[] sortCountArray = getSortCountArray(randomArray, countArray);
+        out.println();
+
+        // 자주 출현하는 수(빈도 수가 높은 수) 와 그 수가 출현하는 횟수를 함께 출력한다.
+        result = loopResult + "\n" + printArray(printT, sortCountArray, randomArray, countArray);
+        out.print(result);
         return result;
     }
 
