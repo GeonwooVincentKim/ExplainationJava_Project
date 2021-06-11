@@ -149,31 +149,25 @@ public class ArrayListQ2 {
         countList.set(j, tempValue);
     }
 
-    // 8. 전체 배열들을 출력한디.
-    public static String printArray(List<Integer> randomList, int[] countList, int printCount) {
-        String setResult = "";
-
-        // 랜덤 배열 최빈도 수 내림차순 출력
-        for (int i = 0; i < printCount; i++) {
-            out.print("#" + (i + 1) + " " + countList[i]);
-            out.println(" (" + arrayFrequency(randomList, countList[i]) + ")");
-            setResult += "#" + (i + 1) + " " + countList[i] + "\n";
-        }
-
-        return setResult;
-    }
-
-    // 8. 전체 배열들을 출력한디.
+    // 8. 전체 배열들을 출력한다. (숫자의 빈도수를 출력하지 않고, 정렬한 목록만 출력한다)
     public static String printArray(int printT, List<Integer> sortCountList) {
-        // public static String printArray(int printT, int[] randomArray, int[]
-        // countArray, int[] sortCountArray) {
         String getResult = "";
         // 랜덤 배열 최빈도 수 내림차순 출력
         for (int i = 0; i < printT; i++) {
-            // getResult += "#" + (i + 1) + " " + sortCountArray[i] + " (" +
-            // arrayFrequency(randomArray, countArray[i])
-            // + ")" + "\n";
             getResult += "#" + (i + 1) + " " + sortCountList.get(i) + "\n";
+        }
+
+        return getResult;
+    }
+
+    // 8. 전체 배열들을 출력한다. (숫자의 빈도수와 정렬한 목록 모두 함께 출력한다)
+    public static String printArray(int printValue, List<Integer> sortCountArray, List<Integer> randomArray,
+            List<Integer> countArray) {
+        String getResult = "";
+
+        for (int i = 0; i < printValue; i++) {
+            getResult += "#" + (i + 1) + " " + sortCountArray.get(i) + " ("
+                    + arrayFrequency(randomArray, countArray.get(i)) + ")" + "\n";
         }
 
         return getResult;
@@ -221,7 +215,7 @@ public class ArrayListQ2 {
         // result = loopResult + "\n" + printArray(printT, sortCountList, randomList,
         // countList);
         // 7. sortcountList 의 Array 값들을 불러온다.
-        result = loopResult + "\n" + printArray(printValue, sortCountList);
+        result = loopResult + "\n" + printArray(printValue, sortCountList, randomList, countList);
         out.print(result);
         return result;
     }
