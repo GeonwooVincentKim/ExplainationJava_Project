@@ -160,17 +160,17 @@ public class Q2 {
         String setResult = "";
 
         // 랜덤 배열 목록을 출력한다.
-        for (int i = 0; i < randomArray.length; i++) {
-            out.print(randomArray[i] + " ");
-            setResult += randomArray[i] + " ";
-        }
+        // for (int i = 0; i < randomArray.length; i++) {
+        // out.print(randomArray[i] + " ");
+        // setResult += randomArray[i] + " ";
+        // }
 
-        out.println();
+        // out.println();
 
-        // 빈도 값을 count 하는 배열의 목록들을 출력한다.
-        for (int i = 0; i < countArray.length; i++) {
-            out.print(countArray[i] + " ");
-        }
+        // // 빈도 값을 count 하는 배열의 목록들을 출력한다.
+        // for (int i = 0; i < countArray.length; i++) {
+        // out.print(countArray[i] + " ");
+        // }
 
         out.println();
 
@@ -192,18 +192,20 @@ public class Q2 {
         String result = "";
         String loopResult = ""; // printRandomArray 의 randomArray 의 내부 배열 값을 출력
         int randomArray[] = new int[getValue]; // random 값들을 받는 int 배열
+        int countArray[] = new int[getValue];
+
         randomArray = getRandomArray(randomArray);
         out.println();
 
         loopResult = printRandomArray(randomArray);
         out.println(loopResult);
 
-        getCountArray(randomArray);
+        countArray = getCountArray(randomArray);
         out.println();
 
         // result = getResult(printT, randomArray, countArray);
         // result = getResult(printT, randomArray);
-        result = getResult(randomArray);
+        result = loopResult + "\n" + getResult(randomArray);
         return result;
     }
 

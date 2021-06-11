@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class App {
+    // randomRange 에서 getData 의 사용자 입력 값인 getValue 의 값을 가지고 와서 범위를 n1 ~ n2 만큼 지정한다.
+    public static int randomRange(int n1, int n2) {
+        return (int) (Math.random() * (n2 - n1 + 1)) + n1;
+    }
+
     public static int arrayFrequency(List<Integer> randomList, int number) {
         int count = 0;
 
@@ -26,14 +31,6 @@ public class App {
         }
 
         return isContainValue;
-    }
-
-    public boolean contains(CharSequence sequence) {
-        return indexOf(sequence.toString()) > -1;
-    }
-
-    private int indexOf(String string) {
-        return 0;
     }
 
     public static String printArray(List<Integer> randArr, List<Integer> cntArr, int printCnt) {
@@ -97,10 +94,11 @@ public class App {
         // int temp = 0;
         int[] temp = new int[randomValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
         List<Integer> randomList = new ArrayList<Integer>(); // temp 배열의 값을 저장한다.
+        // List<Integer> randomList = Arrays.asList();
         List<Integer> countList = new ArrayList<Integer>(); // 중복을 제거한 값들을 countArray 에 저장한다.
 
-        for (int i = 0; i < randomValue; i++) {
-            temp[i] = (int) (Math.random() * (99 - 11 + 1)) + 11;
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = randomRange(11, 99);
             out.print(temp[i] + " ");
         }
 
@@ -118,11 +116,8 @@ public class App {
         // ArrayList 로 여러 번 나오는 수의 빈도 값 탐색 및 겹치는 수 확인
         // i 와 j 두 개를 만들어놓고, 각각 randomList 라는 ArrayList 에서 겹치는 수 확인 후,
         // count 값에 저장한다.
-        for (int i = 0; i < randomList.size(); i++) {
+        for (int i = 0; i < temp.length; i++) {
             // Original Code
-            // if (!countList.contains(temp[i])) {
-            // countList.add(temp[i]);
-            // }
             if (!(isContains(countList, temp[i]))) {
                 countList.add(temp[i]);
             }
@@ -137,8 +132,8 @@ public class App {
 
         // countList 의 이전 값과 countList 의 다음 값을 각각 currentValue(currentCount),
         // nextValue(nextCount) 에 저장한 후, currentCount 의 값과 nextCount 을 비교해서 정렬한다.
-        // for (int i = 0; i < countList.size(); i++) {
-        for (int i = 0; i < temp.length; i++) {
+        for (int i = 0; i < countList.size(); i++) {
+            // for (int i = 0; i < temp.length; i++) {
             for (int j = i + 1; j < countList.size(); j++) {
                 // out.print(temp[j] + " ");
                 currentValue = countList.get(i);
