@@ -37,11 +37,11 @@ public class ArrayListQ2 {
         return temp;
     }
 
-    public static List<Integer> getcountList(List<Integer> countList) {
-        List<Integer> getcountList = new ArrayList<>(countList.size());
+    // public static List<Integer> getcountList(List<Integer> countList) {
+    // List<Integer> getcountList = new ArrayList<>(countList.size());
 
-        return getcountList;
-    }
+    // return getcountList;
+    // }
 
     // countList 의 length 만큼 값을 비교하면서,
     // 만약 countList 의 현재 index 의 수와 같은 숫자가 다른 index 에도 있다면
@@ -187,7 +187,7 @@ public class ArrayListQ2 {
 
         // int temp = 0;
         int[] temp = new int[randomValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
-        List<Integer> randomList = new ArrayList<Integer>(); // temp 배열의 값을 저장한다.
+        // List<Integer> randomList = new ArrayList<Integer>(); // temp 배열의 값을 저장한다.
         // List<Integer> randomList = Arrays.asList();
         // List<Integer> countList = new ArrayList<Integer>(); // 중복을 제거한 값들을 countList
         // 에 저장한다.
@@ -197,7 +197,7 @@ public class ArrayListQ2 {
         out.println();
 
         // 2. randomList 값을 getRandomList 로부터 넘겨받는다.
-        randomList = getRandomList(temp);
+        List<Integer> randomList = getRandomList(temp);
         out.println(randomList);
 
         // 3. randomList 의 값을 printRandomList 로부터 넘겨받아 그 안에 있는 getRandomList 의 값들을 출력한다.

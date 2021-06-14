@@ -27,8 +27,6 @@ public class Q2 {
     // randomArray 의 길이를 지정받은 후, randomRange 의 범위만큼 getRandomArray 함수의
     // getRandomArray 배열 안에 값을 순차적으로 지정해준다.
     public static int[] getRandomArray(int[] randomArray) {
-        // int getRandomArray[] = new int[randomArray.length];
-
         for (int i = 0; i < randomArray.length; i++) {
             randomArray[i] = randomRange(11, 99);
             out.print(randomArray[i] + " | ");
@@ -56,6 +54,8 @@ public class Q2 {
     // 3. 배열 내 빈도수를 세는 getCountArray 가 randomArray 배열을 넘겨 받아 getCountArray 에 저장한다.
     public static int[] getCountArray(int[] temp) {
         int[] countArray = new int[temp.length];
+        out.println(countArray);
+
         for (int i = 0; i < temp.length; i++) {
             if (!isContains(countArray, temp[i])) {
                 countArray[i] = Integer.valueOf(temp[i]);
@@ -192,6 +192,7 @@ public class Q2 {
         out.println(loopResult);
 
         int[] countArray = getCountArray(randomArray);
+        out.println(countArray);
         out.println();
 
         // getSortCountArray 는 빈도 수가 많음과 동시에 가장 큰 수대로 함께 정렬하는 함수이다.
