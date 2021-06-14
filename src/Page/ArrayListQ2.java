@@ -25,7 +25,7 @@ public class ArrayListQ2 {
     }
 
     /* 중복을 포함한 배열을 가지고 있는 getrandomList */
-    // 1. randomRange 의 범위 값, getData 의 getValue 값들을 각각 넘겨 받고, getValue 의 값만큼
+    // 0. randomRange 의 범위 값, getData 의 getValue 값들을 각각 넘겨 받고, getValue 의 값만큼
     // randomList 의 길이를 지정받은 후, randomRange 의 범위만큼 getrandomList 함수의
     // getrandomList 배열 안에 값을 순차적으로 지정해준다.
     public static int[] getTempData(int[] temp) {
@@ -59,6 +59,7 @@ public class ArrayListQ2 {
         return isContainValue;
     }
 
+    // 1. temp[] 배열에 추가한 데이터를 randomList ArrayList 에 데이터를 추가한다.
     public static List<Integer> getRandomList(int[] temp) {
         List<Integer> randomList = new ArrayList<Integer>();
         out.println(randomList.toString());

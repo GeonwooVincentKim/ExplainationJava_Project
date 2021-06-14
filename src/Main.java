@@ -1,6 +1,6 @@
 import static Page.Q1.q1_main;
 import static Page.Q2.q2_main;
-import static Page.Q3.q3_main;
+import static Page.Q4.q4_main;
 import static Page.ArrayListQ2.arrayList_q2_main;
 import static java.lang.System.out;
 
@@ -19,10 +19,10 @@ public class Main {
         } else if (selectMenu == 2) {
             q2_main(selectMenu);
         } else if (selectMenu == 3) {
-            q3_main(selectMenu);
-        } else if (selectMenu == 4) {
             out.println("아직 메뉴가 구성이 되지 않았습니다.");
             System.exit(0);
+        } else if (selectMenu == 4) {
+            q4_main(selectMenu);
         } else if (selectMenu == 5) {
             arrayList_q2_main(selectMenu);
         } else {

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import Feature.FileManager.FileManager;
 
-public class Q3 {
+public class Q4 {
     public static Scanner fileReader(FileManager fManager, String fileName) {
         return fManager.fileReader(fileName);
     }
@@ -28,14 +28,14 @@ public class Q3 {
         writeFile(fManager, fileName, getResult);
     }
 
-    public static void q3_main(int selectNum) {
+    public static void q4_main(int selectNum) {
         File file = null;
         Scanner fileReader = null;
         FileWriter fileWriter = null;
         FileManager fManager = new FileManager(file, fileReader, fileWriter);
 
-        String readFileName = "input3.txt";
-        String writeFileName = "output3.txt";
+        String readFileName = "input4.txt";
+        String writeFileName = "output4.txt";
 
         Scanner sc = new Scanner(System.in);
         out.println("선택하세요.\n1. 파일 입출력\n2. 직접 입력하기");
