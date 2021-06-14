@@ -4,6 +4,8 @@ import static java.lang.System.out;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Feature.FileManager.FileManager;
@@ -22,185 +24,199 @@ public class Q2 {
         return (int) (Math.random() * (n2 - n1 + 1)) + n1;
     }
 
-    /* 중복을 포함한 배열을 가지고 있는 getRandomArray */
-    // 1. randomRange 의 범위 값, getData 의 getValue 값들을 각각 넘겨 받고, getValue 의 값만큼
-    // randomArray 의 길이를 지정받은 후, randomRange 의 범위만큼 getRandomArray 함수의
-    // getRandomArray 배열 안에 값을 순차적으로 지정해준다.
-    public static int[] getRandomArray(int[] randomArray) {
-        for (int i = 0; i < randomArray.length; i++) {
-            randomArray[i] = randomRange(11, 99);
-            out.print(randomArray[i] + " | ");
+    /* 중복을 포함한 배열을 가지고 있는 getrandomList */
+    // 0. randomRange 의 범위 값, getData 의 getValue 값들을 각각 넘겨 받고, getValue 의 값만큼
+    // randomList 의 길이를 지정받은 후, randomRange 의 범위만큼 getrandomList 함수의
+    // getrandomList 배열 안에 값을 순차적으로 지정해준다.
+    public static int[] getTempData(int[] temp) {
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = randomRange(11, 99);
+            out.print(temp[i] + " ");
         }
 
-        return randomArray;
+        return temp;
     }
 
-    // countArray 의 length 만큼 값을 비교하면서,
-    // 만약 countArray 의 현재 index 의 수와 같은 숫자가 다른 index 에도 있다면
-    // isContainsValue 를 true 를 return 하여 반복되는 숫자가 있다고 출력한다.
-    public static boolean isContains(int[] countArray, int temp) {
-        boolean isContainsValue = false;
+    // public static List<Integer> getcountList(List<Integer> countList) {
+    // List<Integer> getcountList = new ArrayList<>(countList.size());
 
-        for (int i = 0; i < countArray.length; i++) {
-            if (countArray[i] == temp) {
-                isContainsValue = true;
-                return isContainsValue;
+    // return getcountList;
+    // }
+
+    // countList 의 length 만큼 값을 비교하면서,
+    // 만약 countList 의 현재 index 의 수와 같은 숫자가 다른 index 에도 있다면
+    // isContainsValue 를 true 를 return 하여 반복되는 숫자가 있다고 출력한다.
+    public static boolean isContains(List<Integer> countList, int temp) {
+        boolean isContainValue = false;
+
+        for (int i = 0; i < countList.size(); i++) {
+            if (countList.get(i) == temp) {
+                isContainValue = true;
+                return isContainValue;
             }
         }
 
-        return isContainsValue;
+        return isContainValue;
     }
 
-    // 3. 배열 내 빈도수를 세는 getCountArray 가 randomArray 배열을 넘겨 받아 getCountArray 에 저장한다.
-    public static int[] getCountArray(int[] temp) {
-        int[] countArray = new int[temp.length];
-        out.println(countArray);
+    // 1. temp[] 배열에 추가한 데이터를 randomList ArrayList 에 데이터를 추가한다.
+    public static List<Integer> getRandomList(int[] temp) {
+        List<Integer> randomList = new ArrayList<Integer>();
+        out.println(randomList.toString());
 
         for (int i = 0; i < temp.length; i++) {
-            if (!isContains(countArray, temp[i])) {
-                countArray[i] = Integer.valueOf(temp[i]);
-                out.print(countArray[i] + " ");
-            }
+            randomList.add(temp[i]);
+            out.print(randomList.get(i) + " ");
         }
 
-        return countArray;
+        return randomList;
     }
 
-    // 2. getRandomArray 의 randomArray 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
-    public static String printRandomArray(int[] randomArray) {
+    // 2. getrandomList 의 randomList 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
+    public static String printRandomList(int[] randomList) {
         String loopResult = "";
 
-        for (int i = 0; i < randomArray.length; i++) {
-            loopResult += randomArray[i] + " ";
+        for (int i = 0; i < randomList.length; i++) {
+            loopResult += randomList[i] + " ";
         }
 
         return loopResult;
     }
 
-    // 4. countArray 배열을 넘겨받은 후, countArray 배열의 빈도수를 찾음과 동시에 특정 숫자의 빈도 수와
+    // 3. 배열 내 빈도수를 세는 getcountList 가 randomList 배열을 넘겨 받아 getcountList 에 저장한다.
+    public static List<Integer> getCountList(int[] temp) {
+        List<Integer> countList = new ArrayList<Integer>();
+        out.print(countList);
+
+        for (int i = 0; i < temp.length; i++) {
+            if (!(isContains(countList, temp[i]))) {
+                countList.add(temp[i]);
+            }
+        }
+
+        return countList;
+    }
+
+    // 4. countList 배열을 넘겨받은 후, countList 배열의 빈도수를 찾음과 동시에 특정 숫자의 빈도 수와
     // 전체 배열을 각각의 기준에 따라 정렬한다.
-    public static int[] getSortCountArray(int[] randomArray, int[] countArray) {
-        int currentValue = 0; // 현재 값
-        int currentCount = 0; // 현재 값의 빈도 수
-        int nextValue = 0; // 다음 값
-        int nextCount = 0; // 다음 값의 빈도 수
+    public static List<Integer> getSortCountList(List<Integer> randomList, List<Integer> countList) {
 
-        out.println();
+        int currentValue = 0; // 반복되는 수의 빈도 수를 저장하는 countList 의 현재 값
+        int currentCount = 0; // countList 의 빈도 수
+        int nextValue = 0; // countList 의 다음 값
+        int nextCount = 0; // countList 의 다음 빈도 수
 
-        for (int i = 0; i < countArray.length; i++) {
-            for (int j = i + 1; j < countArray.length; j++) {
-                currentValue = countArray[i];
-                nextValue = countArray[j];
+        // countList 의 이전 값과 countList 의 다음 값을 각각 currentValue(currentCount),
+        // nextValue(nextCount) 에 저장한 후, currentCount 의 값과 nextCount 을 비교해서 정렬한다.
+        for (int i = 0; i < countList.size(); i++) {
+            // for (int i = 0; i < temp.length; i++) {
+            for (int j = i + 1; j < countList.size(); j++) {
+                // out.print(temp[j] + " ");
+                currentValue = countList.get(i);
+                nextValue = countList.get(j);
 
-                currentCount = arrayFrequency(randomArray, currentValue);
-                nextCount = arrayFrequency(randomArray, nextValue);
+                currentCount = arrayFrequency(randomList, currentValue);
+                nextCount = arrayFrequency(randomList, nextValue);
 
                 if (currentCount < nextCount) {
-                    bubbleSort(randomArray, i, j);
-                    bubbleSort(countArray, i, j);
+                    bubbleSort(countList, currentValue, nextValue, i, j);
                 } else if (currentCount == nextCount && currentValue < nextValue) {
-                    bubbleSort(randomArray, i, j);
-                    bubbleSort(countArray, i, j);
+                    bubbleSort(countList, currentValue, nextValue, i, j);
                 }
             }
         }
 
-        return countArray;
+        return countList;
     }
 
-    // 5. getRandomArray 에서의 특정 숫자의 빈도수와 getCountArray 에서의 특정 숫자의 빈도수를 확인하여
+    // 5. getrandomList 에서의 특정 숫자의 빈도수와 getcountList 에서의 특정 숫자의 빈도수를 확인하여
     // 각각 수가 출현할 때마다 count 의 수를 1씩 늘려준다.
-    public static int arrayFrequency(int[] randomArray, int number) {
+    public static int arrayFrequency(List<Integer> randomList, int number) {
         int count = 0;
 
-        for (int i = 0; i < randomArray.length; i++) {
-            if (randomArray[i] == number) {
+        for (int i = 0; i < randomList.size(); i++) {
+            if (randomList.get(i) == number) {
                 count++;
             }
         }
-
         return count;
     }
 
-    // 6. countArray 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
-    public static void bubbleSort(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    // 6. countList 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
+    public static void bubbleSort(List<Integer> countList, int currentValue, int nextValue, int i, int j) {
+        int tempValue;
+        tempValue = currentValue;
+        countList.set(i, nextValue);
+        countList.set(j, tempValue);
     }
 
-    // 6. countArray 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
-    public static void bubbleArraySort(int[] getArray, int currentValue, int nextValue) {
-        int tempValue = getArray[currentValue];
-        getArray[currentValue] = getArray[nextValue];
-        getArray[nextValue] = tempValue;
-    }
-
-    // 7. sortCountArray 의 Array 값들을 불러온다.
-    public static String getResult(int[] randomArray) {
-        int printT = 5;
-        String result;
-        int[] countArray = getCountArray(randomArray);
-        int[] sortCountArray = getSortCountArray(randomArray, countArray);
-
-        // printArray 의 값을 가져와 모든 값들을 출력 및 파일로 만들 result String 변수에 저장한다.
-        // result = printArray(randomArray, countArray, printT) + " ";
-        // result = printArray(printT, sortCountArray) + " ";
-        // result = printArray(printT, sortCountArray, countArray) + " ";
-        result = printArray(printT, sortCountArray, randomArray, countArray) + " ";
-        return result;
-    }
-
-    // 8. 전체 배열들을 출력한디.
-    public static String printArray(int[] randomArray, int[] countArray, int printCount) {
-        String setResult = "";
-
+    // 8. 전체 배열들을 출력한다. (숫자의 빈도수를 출력하지 않고, 정렬한 목록만 출력한다)
+    public static String printArray(int printT, List<Integer> sortCountList) {
+        String getResult = "";
         // 랜덤 배열 최빈도 수 내림차순 출력
-        for (int i = 0; i < printCount; i++) {
-            out.print("#" + (i + 1) + " " + countArray[i]);
-            out.println(" (" + arrayFrequency(randomArray, countArray[i]) + ")");
-            setResult += "#" + (i + 1) + " " + countArray[i] + "\n";
+        for (int i = 0; i < printT; i++) {
+            getResult += "#" + (i + 1) + " " + sortCountList.get(i) + "\n";
         }
 
-        return setResult;
+        return getResult;
     }
 
-    public static String printArray(int printValue, int[] sortCountArray, int[] randomArray, int[] countArray) {
+    // 8. 전체 배열들을 출력한다. (숫자의 빈도수와 정렬한 목록 모두 함께 출력한다)
+    public static String printArray(int printValue, List<Integer> sortCountArray, List<Integer> randomArray,
+            List<Integer> countArray) {
         String getResult = "";
 
         for (int i = 0; i < printValue; i++) {
-            getResult += "#" + (i + 1) + " " + sortCountArray[i] + " (" + arrayFrequency(randomArray, countArray[i])
-                    + ")" + "\n";
+            getResult += "#" + (i + 1) + " " + sortCountArray.get(i) + " ("
+                    + arrayFrequency(randomArray, countArray.get(i)) + ")" + "\n";
         }
 
         return getResult;
     }
 
     public static String getData(int getValue) {
-        int printT = 5;
         // 1. 숫자 N 을 입력받을 때, q2_main 에서 임의의 정수 T 의 크기만큼 입력을 받는다.
-        // 2. randomArray 를 선언하여 입력받은 숫자 N의 데이터들 (중복 되는 데이터 또한 포함) 모두 포함하여 저장한다.
-        // 3. isContains 를 선언하여 randomArray 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
-        String result = "";
-        String loopResult = ""; // printRandomArray 의 randomArray 의 내부 배열 값을 출력
-        int randomArray[] = new int[getValue]; // random 값들을 받는 int 배열
+        // 2. randomList 를 선언하여 입력받은 숫자 N의 데이터들 (중복 되는 데이터 또한 포함) 모두 포함하여 저장한다.
+        // 3. isContains 를 선언하여 randomList 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
+        String result = ""; // 결과 값을 저장한다.
+        int randomValue = 20; // 랜덤 길이는 20으로 설정한다.
+        int printValue = 5; // 출력할 개수를 정한다.]
 
-        randomArray = getRandomArray(randomArray);
+        String loopResult = ""; // RandomList 에서 뽑아온 값을 출력한다.
+        // int countValue = 0; // 여러 번 나오는 수의 빈도 값을 저장한다.
+
+        // int temp = 0;
+        int[] temp = new int[randomValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
+        // List<Integer> randomList = new ArrayList<Integer>(); // temp 배열의 값을 저장한다.
+        // List<Integer> randomList = Arrays.asList();
+        // List<Integer> countList = new ArrayList<Integer>(); // 중복을 제거한 값들을 countList
+        // 에 저장한다.
+
+        // 1. temp int[] 배열에 temp 하나씩 넘겨받은 값들을 temp 에 저장한다.
+        temp = getTempData(temp);
         out.println();
 
-        loopResult = printRandomArray(randomArray);
+        // 2. randomList 값을 getRandomList 로부터 넘겨받는다.
+        List<Integer> randomList = getRandomList(temp);
+        out.println(randomList);
+
+        // 3. randomList 의 값을 printRandomList 로부터 넘겨받아 그 안에 있는 getRandomList 의 값들을 출력한다.
+        loopResult = printRandomList(temp);
         out.println(loopResult);
 
-        int[] countArray = getCountArray(randomArray);
-        out.println(countArray);
-        out.println();
+        // 4. countList 의 값을 getCountList 로부터 넘겨받는다.
+        List<Integer> countList = getCountList(temp);
+        out.println(countList);
 
-        // getSortCountArray 는 빈도 수가 많음과 동시에 가장 큰 수대로 함께 정렬하는 함수이다.
-        int[] sortCountArray = getSortCountArray(randomArray, countArray);
+        // 5. sortCountList 의 List 값들을 불러온다.
+        List<Integer> sortCountList = getSortCountList(randomList, countList);
         out.println();
 
         // 자주 출현하는 수(빈도 수가 높은 수) 와 그 수가 출현하는 횟수를 함께 출력한다.
-        result = loopResult + "\n" + printArray(printT, sortCountArray, randomArray, countArray);
+        // result = loopResult + "\n" + printArray(printT, sortCountList, randomList,
+        // countList);
+        // 7. sortcountList 의 Array 값들을 불러온다.
+        result = loopResult + "\n" + printArray(printValue, sortCountList, randomList, countList);
         out.print(result);
         return result;
     }

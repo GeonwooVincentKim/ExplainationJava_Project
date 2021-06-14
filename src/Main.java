@@ -1,7 +1,7 @@
 import static Page.Q1.q1_main;
-import static Page.Q2.q2_main;
+import static Page.ArrayQ2.array_q2_main;
 import static Page.Q4.q4_main;
-import static Page.ArrayListQ2.arrayList_q2_main;
+import static Page.Q2.q2_main;
 import static java.lang.System.out;
 
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class Main {
         } else if (selectMenu == 4) {
             q4_main(selectMenu);
         } else if (selectMenu == 5) {
-            arrayList_q2_main(selectMenu);
+            array_q2_main(selectMenu);
         } else {
             System.exit(0);
         }
