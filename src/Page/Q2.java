@@ -37,12 +37,6 @@ public class Q2 {
         return temp;
     }
 
-    // public static List<Integer> getcountList(List<Integer> countList) {
-    // List<Integer> getcountList = new ArrayList<>(countList.size());
-
-    // return getcountList;
-    // }
-
     // countList 의 length 만큼 값을 비교하면서,
     // 만약 countList 의 현재 index 의 수와 같은 숫자가 다른 index 에도 있다면
     // isContainsValue 를 true 를 return 하여 반복되는 숫자가 있다고 출력한다.
