@@ -1,9 +1,5 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
-import java.io.OutputStreamWriter;
 
 import static java.lang.System.out;
 
@@ -86,10 +82,6 @@ public class LEVEL4test {
             int len = 0;
             boolean alpha[] = new boolean[125];
             String pattern = "";
-
-            String first = "";
-            String last = "";
-            String result = "";
 
             String input = sc.next();
             for (int i = 0; i < input.length(); i++) {
