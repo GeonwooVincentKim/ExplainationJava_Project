@@ -80,10 +80,14 @@ public class ArrayQ2 {
     // 4. countArray 배열을 넘겨받은 후, countArray 배열의 빈도수를 찾음과 동시에 특정 숫자의 빈도 수와
     // 전체 배열을 각각의 기준에 따라 정렬한다.
     public static int[] getSortCountArray(int[] randomArray, int[] countArray) {
+        int[] getSortCountArray = new int[countArray.length];
+        // int[] getSortCountArray = getCountArray(countArray);
         int currentValue = 0; // 현재 값
         int currentCount = 0; // 현재 값의 빈도 수
         int nextValue = 0; // 다음 값
         int nextCount = 0; // 다음 값의 빈도 수
+        // int getSwapRandomArrayValue = 0; // Swapping 을 한 RandomArray 의 값들을 하나씩 가져온다.
+        // int getSwapCountArrayValue = 0; // Swapping 을 한 CountArray 의 값들을 하나씩 가져온다.
 
         out.println();
 
@@ -96,16 +100,20 @@ public class ArrayQ2 {
                 nextCount = arrayFrequency(randomArray, nextValue);
 
                 if (currentCount < nextCount) {
-                    bubbleSort(randomArray, i, j);
-                    bubbleSort(countArray, i, j);
+                    swapArray(randomArray, i, j);
+                    swapArray(countArray, i, j);
+                    // getSortCountArray = countArray; // 얕은 복사
+                    getSortCountArray[i] = countArray[i]; // 깊은 복사
                 } else if (currentCount == nextCount && currentValue < nextValue) {
-                    bubbleSort(randomArray, i, j);
-                    bubbleSort(countArray, i, j);
+                    swapArray(randomArray, i, j);
+                    swapArray(countArray, i, j);
+                    // getSortCountArray = countArray; // 얕은 복사
+                    getSortCountArray[i] = countArray[i]; // 깊은 복사
                 }
             }
         }
 
-        return countArray;
+        return getSortCountArray;
     }
 
     // 5. getRandomArray 에서의 특정 숫자의 빈도수와 getCountArray 에서의 특정 숫자의 빈도수를 확인하여
@@ -123,10 +131,13 @@ public class ArrayQ2 {
     }
 
     // 6. countArray 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
-    public static void bubbleSort(int[] arr, int i, int j) {
+    // public static void swapArray(int[] arr, int i, int j) {
+    public static int swapArray(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+
+        return temp;
     }
 
     // 6. countArray 의 빈도수, 그리고 숫자의 크기의 값들을 가져와 내림차순으로 정렬한다.
