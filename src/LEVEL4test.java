@@ -96,15 +96,8 @@ public class LEVEL4test {
                     String competition = "";
                     len = pattern.length();
 
-                    // first = input.substring(0, i);
-                    // last = input.substring(i, i * 2);
-                    // if (first.equals(last)) {
-                    // result += "#" + t + " " + len;
-                    // System.out.println(result);
-                    // }
                     for (int k = len; k < len * 2; k++) {
                         competition += input.charAt(k);
-                        // out.println(competition);
                     }
                     if (pattern.equals(competition))
                         break;
