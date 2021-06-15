@@ -26,8 +26,10 @@ public class LEVEL4test {
                     for (int k = len; k < len * 2; k++) {
                         competition += input.charAt(k);
                     }
+
                     if (pattern.equals(competition))
                         break;
+
                     else {
                         pattern += input.charAt(i);
                         out.println(pattern);
