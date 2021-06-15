@@ -100,7 +100,7 @@ public class Q2 {
     // 4. countList 배열을 넘겨받은 후, countList 배열의 빈도수를 찾음과 동시에 특정 숫자의 빈도 수와
     // 전체 배열을 각각의 기준에 따라 정렬한다.
     public static List<Integer> getSortCountList(List<Integer> randomList, List<Integer> countList) {
-
+        List<Integer> sortedCountList = new ArrayList<Integer>();
         int currentValue = 0; // 반복되는 수의 빈도 수를 저장하는 countList 의 현재 값
         int currentCount = 0; // countList 의 빈도 수
         int nextValue = 0; // countList 의 다음 값
@@ -119,14 +119,24 @@ public class Q2 {
                 nextCount = arrayFrequency(randomList, nextValue);
 
                 if (currentCount < nextCount) {
-                    bubbleSort(countList, currentValue, nextValue, i, j);
+                    int tempValue = currentValue;
+                    countList.set(i, nextValue);
+                    countList.set(j, tempValue);
+
+                    sortedCountList = countList;
+                    // bubbleSort(countList, currentValue, nextValue, i, j);
                 } else if (currentCount == nextCount && currentValue < nextValue) {
-                    bubbleSort(countList, currentValue, nextValue, i, j);
+                    // bubbleSort(countList, currentValue, nextValue, i, j);
+                    int tempValue = currentValue;
+                    countList.set(i, nextValue);
+                    countList.set(j, tempValue);
+
+                    sortedCountList = countList;
                 }
             }
         }
 
-        return countList;
+        return sortedCountList;
     }
 
     // 5. getrandomList 에서의 특정 숫자의 빈도수와 getcountList 에서의 특정 숫자의 빈도수를 확인하여
@@ -180,7 +190,7 @@ public class Q2 {
         // 3. isContains 를 선언하여 randomList 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
         String result = ""; // 결과 값을 저장한다.
         int randomValue = 20; // 랜덤 길이는 20으로 설정한다.
-        int printValue = 5; // 출력할 개수를 정한다.]
+        int printValue = 5; // 출력할 개수를 정한다.
 
         String loopResult = ""; // RandomList 에서 뽑아온 값을 출력한다.
         // int countValue = 0; // 여러 번 나오는 수의 빈도 값을 저장한다.
@@ -209,10 +219,10 @@ public class Q2 {
         out.println(countList);
 
         // 5. sortCountList 의 List 값들을 불러온다.
+        // 자주 출현하는 수(빈도 수가 높은 수) 와 그 수가 출현하는 횟수를 함께 출력한다.
         List<Integer> sortCountList = getSortCountList(randomList, countList);
         out.println();
 
-        // 자주 출현하는 수(빈도 수가 높은 수) 와 그 수가 출현하는 횟수를 함께 출력한다.
         // result = loopResult + "\n" + printArray(printT, sortCountList, randomList,
         // countList);
         // 7. sortcountList 의 Array 값들을 불러온다.
