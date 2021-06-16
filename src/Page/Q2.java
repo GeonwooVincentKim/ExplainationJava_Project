@@ -54,12 +54,15 @@ public class Q2 {
     }
 
     // 1. temp[] 배열에 추가한 데이터를 randomList ArrayList 에 데이터를 추가한다.
-    public static List<Integer> getRandomList(int[] temp) {
+    // public static List<Integer> getRandomList(int[] temp) {
+    public static List<Integer> getRandomList(int getValue) {
         List<Integer> randomList = new ArrayList<Integer>();
         out.println(randomList.toString());
 
-        for (int i = 0; i < temp.length; i++) {
-            randomList.add(temp[i]);
+        // for (int i = 0; i < temp.length; i++) {
+        for (int i = 0; i < getValue; i++) {
+            // randomList.add(temp[i]);
+            randomList.add(randomRange(11, 99));
             out.print(randomList.get(i) + " ");
         }
 
@@ -67,24 +70,26 @@ public class Q2 {
     }
 
     // 2. getrandomList 의 randomList 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
-    public static String printRandomList(int[] randomList) {
+    // public static String printRandomList(int[] randomList) {
+    public static String printRandomList(List<Integer> randomList) {
         String loopResult = "";
 
-        for (int i = 0; i < randomList.length; i++) {
-            loopResult += randomList[i] + " ";
+        for (int i = 0; i < randomList.size(); i++) {
+            loopResult += randomList.get(i) + " ";
         }
 
         return loopResult;
     }
 
     // 3. 배열 내 빈도수를 세는 getcountList 가 randomList 배열을 넘겨 받아 getcountList 에 저장한다.
-    public static List<Integer> getCountList(int[] temp) {
+    // public static List<Integer> getCountList(int[] temp) {
+    public static List<Integer> getCountList(List<Integer> randomList) {
         List<Integer> countList = new ArrayList<Integer>();
         out.print(countList);
 
-        for (int i = 0; i < temp.length; i++) {
-            if (!(isContains(countList, temp[i]))) {
-                countList.add(temp[i]);
+        for (int i = 0; i < randomList.size(); i++) {
+            if (!(isContains(countList, randomList.get(i)))) {
+                countList.add(randomList.get(i));
             }
         }
 
@@ -190,26 +195,29 @@ public class Q2 {
 
         // int temp = 0;
         // 랜덤 길이는 사용자가 입력한 배열의 길이로 결정된다.
-        int[] temp = new int[getValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
+        // int[] temp = new int[getValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
         // List<Integer> randomList = new ArrayList<Integer>(); // temp 배열의 값을 저장한다.
         // List<Integer> randomList = Arrays.asList();
         // List<Integer> countList = new ArrayList<Integer>(); // 중복을 제거한 값들을 countList
         // 에 저장한다.
 
         // 1. temp int[] 배열에 temp 하나씩 넘겨받은 값들을 temp 에 저장한다.
-        temp = getTempData(temp);
-        out.println();
+        // temp = getTempData(temp);
+        // out.println();
 
         // 2. randomList 값을 getRandomList 로부터 넘겨받는다.
-        List<Integer> randomList = getRandomList(temp);
+        // List<Integer> randomList = getRandomList(temp);
+        List<Integer> randomList = getRandomList(getValue);
         out.println(randomList);
 
         // 3. randomList 의 값을 printRandomList 로부터 넘겨받아 그 안에 있는 getRandomList 의 값들을 출력한다.
-        loopResult = printRandomList(temp);
+        // loopResult = printRandomList(temp);
+        loopResult = printRandomList(randomList);
         out.println(loopResult);
 
         // 4. countList 의 값을 getCountList 로부터 넘겨받는다.
-        List<Integer> countList = getCountList(temp);
+        // List<Integer> countList = getCountList(temp);
+        List<Integer> countList = getCountList(randomList);
         out.println(countList);
 
         // 5. sortCountList 의 List 값들을 불러온다.
