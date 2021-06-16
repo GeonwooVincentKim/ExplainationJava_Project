@@ -132,17 +132,18 @@ public class Q2 {
                 // 중복 제거가 되지 않은 List 및 중복 제거가 된 List 의 값의
                 // 위치를 서로 교환한다.
                 if (currentCount < nextCount) {
+                    // bubbleSort(countList, currentValue, nextValue, i, j);
                     int tempValue = currentValue;
                     countList.set(i, nextValue);
                     countList.set(j, tempValue);
 
                     // 빈도 수, 그리고 값을 내림차순에 따라 정렬한 countList 의 값을 sortedCountList 에 대입한다.
                     sortedCountList = countList;
-                    // bubbleSort(countList, currentValue, nextValue, i, j);
                 } else if (currentCount == nextCount && currentValue < nextValue) {
                     // 현재 빈도 수의 값과 다음 빈도 수의 값이 같고,
                     // 중복 제거가 되지 않은 List 의 값과 중복 제거된 List 의 값이 같을 때,
                     // 위치를 서로 교환한다.
+
                     // bubbleSort(countList, currentValue, nextValue, i, j);
                     int tempValue = currentValue;
                     countList.set(i, nextValue);
