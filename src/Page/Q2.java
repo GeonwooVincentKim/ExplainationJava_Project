@@ -123,6 +123,7 @@ public class Q2 {
                     countList.set(i, nextValue);
                     countList.set(j, tempValue);
 
+                    // 빈도 수, 그리고 값을 내림차순에 따라 정렬한 countList 의 값을 sortedCountList 에 대입한다.
                     sortedCountList = countList;
                     // bubbleSort(countList, currentValue, nextValue, i, j);
                 } else if (currentCount == nextCount && currentValue < nextValue) {
