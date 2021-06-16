@@ -54,14 +54,11 @@ public class Q2 {
     }
 
     // 1. temp[] 배열에 추가한 데이터를 randomList ArrayList 에 데이터를 추가한다.
-    // public static List<Integer> getRandomList(int[] temp) {
     public static List<Integer> getRandomList(int getValue) {
         List<Integer> randomList = new ArrayList<Integer>();
         out.println(randomList.toString());
 
-        // for (int i = 0; i < temp.length; i++) {
         for (int i = 0; i < getValue; i++) {
-            // randomList.add(temp[i]);
             randomList.add(randomRange(11, 99));
             out.print(randomList.get(i) + " ");
         }
@@ -70,7 +67,6 @@ public class Q2 {
     }
 
     // 2. getrandomList 의 randomList 배열을 넘겨받아서 loopResult 에 저장하여 랜덤 값을 출력한다.
-    // public static String printRandomList(int[] randomList) {
     public static String printRandomList(List<Integer> randomList) {
         String loopResult = "";
 
@@ -82,7 +78,6 @@ public class Q2 {
     }
 
     // 3. 배열 내 빈도수를 세는 getcountList 가 randomList 배열을 넘겨 받아 getcountList 에 저장한다.
-    // public static List<Integer> getCountList(int[] temp) {
     public static List<Integer> getCountList(List<Integer> randomList) {
         List<Integer> countList = new ArrayList<Integer>();
         out.print(countList);
@@ -108,16 +103,22 @@ public class Q2 {
         // countList 의 이전 값과 countList 의 다음 값을 각각 currentValue(currentCount),
         // nextValue(nextCount) 에 저장한 후, currentCount 의 값과 nextCount 을 비교해서 정렬한다.
         for (int i = 0; i < countList.size(); i++) {
-            // for (int i = 0; i < temp.length; i++) {
             for (int j = i + 1; j < countList.size(); j++) {
-                // out.print(temp[j] + " ");
                 currentValue = countList.get(i);
                 nextValue = countList.get(j);
 
+                // 현재 값의 빈도 수를 확인한다.
                 currentCount = listFrequency(randomList, currentValue);
+
+                // 다음 값의 빈도 수를 확인한다.
                 nextCount = listFrequency(randomList, nextValue);
 
+                // 현재 빈도 수의 값이 다음 빈도 수의 값보다 작을 때,
+                // 중복 제거가 되지 않은 List 및 중복 제거가 된 List 의 값의
+                // 위치를 서로 교환한다.
                 if (currentCount < nextCount) {
+                    // 중복된 List 인 randomList 따로, 중복된 값을 제거한 countList 따로,
+                    // 각각의 List 에 값을 집어넣는다.
                     int tempValue = currentValue;
                     countList.set(i, nextValue);
                     countList.set(j, tempValue);
@@ -125,6 +126,9 @@ public class Q2 {
                     sortedCountList = countList;
                     // bubbleSort(countList, currentValue, nextValue, i, j);
                 } else if (currentCount == nextCount && currentValue < nextValue) {
+                    // 현재 빈도 수의 값과 다음 빈도 수의 값이 같고,
+                    // 중복 제거가 되지 않은 List 의 값과 중복 제거된 List 의 값이 같을 때,
+                    // 위치를 서로 교환한다.
                     // bubbleSort(countList, currentValue, nextValue, i, j);
                     int tempValue = currentValue;
                     countList.set(i, nextValue);
@@ -193,41 +197,27 @@ public class Q2 {
         String loopResult = ""; // RandomList 에서 뽑아온 값을 출력한다.
         // int countValue = 0; // 여러 번 나오는 수의 빈도 값을 저장한다.
 
-        // int temp = 0;
+        // 1. 사용자가 정한 입력받은(또는 파일로부터 받을) 데이터의 개수 만큼, 랜덤 수들을 randomList 리스트에 저장한다.
         // 랜덤 길이는 사용자가 입력한 배열의 길이로 결정된다.
-        // int[] temp = new int[getValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
-        // List<Integer> randomList = new ArrayList<Integer>(); // temp 배열의 값을 저장한다.
-        // List<Integer> randomList = Arrays.asList();
-        // List<Integer> countList = new ArrayList<Integer>(); // 중복을 제거한 값들을 countList
-        // 에 저장한다.
-
-        // 1. temp int[] 배열에 temp 하나씩 넘겨받은 값들을 temp 에 저장한다.
-        // temp = getTempData(temp);
-        // out.println();
-
-        // 2. randomList 값을 getRandomList 로부터 넘겨받는다.
-        // List<Integer> randomList = getRandomList(temp);
-        List<Integer> randomList = getRandomList(getValue);
+        List<Integer> randomList = getRandomList(getValue); // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
         out.println(randomList);
 
-        // 3. randomList 의 값을 printRandomList 로부터 넘겨받아 그 안에 있는 getRandomList 의 값들을 출력한다.
-        // loopResult = printRandomList(temp);
+        // 2. 현재 randomList 리스트 안에 저장되어 있는 random 값들을 출력하여 값을 확인한다.
         loopResult = printRandomList(randomList);
         out.println(loopResult);
 
-        // 4. countList 의 값을 getCountList 로부터 넘겨받는다.
-        // List<Integer> countList = getCountList(temp);
+        // 3. 중복 된 값들을 제거하여 겹치지 않는 수들을 countList 리스트에 저장한다.
         List<Integer> countList = getCountList(randomList);
         out.println(countList);
 
-        // 5. sortCountList 의 List 값들을 불러온다.
-        // 자주 출현하는 수(빈도 수가 높은 수) 와 그 수가 출현하는 횟수를 함께 출력한다.
+        // 4. 중복된 값들이 포함되어 있는 리스트(randomList) 와
+        // 중복되지 않은 값들이 포함되어 있는 리스트(countList)를 가지고 온다.
+        // 숫자들의 빈도 수, 그리고 전체 리스트를 먼저 빈도 수에 따라 정렬을 한 후, 빈도 수가 아닌 값들을 정렬하여
+        // 큰 수를 먼저 출력하고, 작은 수를 나중에 출력하는 내림차순으로 출력한다.
         List<Integer> sortCountList = getSortCountList(randomList, countList);
         out.println();
 
-        // result = loopResult + "\n" + printArray(printT, sortCountList, randomList,
-        // countList);
-        // 7. sortcountList 의 Array 값들을 불러온다.
+        // 5. 중복된 값들이 포함된 randomList 의 빈도 수, 그리고 값들을 정렬한 결과를 출력한다.
         result = loopResult + "\n" + printArray(printValue, sortCountList, randomList, countList);
         out.print(result);
         return result;
