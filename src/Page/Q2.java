@@ -109,8 +109,8 @@ public class Q2 {
                 currentValue = countList.get(i);
                 nextValue = countList.get(j);
 
-                currentCount = arrayFrequency(randomList, currentValue);
-                nextCount = arrayFrequency(randomList, nextValue);
+                currentCount = listFrequency(randomList, currentValue);
+                nextCount = listFrequency(randomList, nextValue);
 
                 if (currentCount < nextCount) {
                     int tempValue = currentValue;
@@ -135,7 +135,7 @@ public class Q2 {
 
     // 5. getrandomList 에서의 특정 숫자의 빈도수와 getcountList 에서의 특정 숫자의 빈도수를 확인하여
     // 각각 수가 출현할 때마다 count 의 수를 1씩 늘려준다.
-    public static int arrayFrequency(List<Integer> randomList, int number) {
+    public static int listFrequency(List<Integer> randomList, int number) {
         int count = 0;
 
         for (int i = 0; i < randomList.size(); i++) {
@@ -172,7 +172,7 @@ public class Q2 {
 
         for (int i = 0; i < printValue; i++) {
             getResult += "#" + (i + 1) + " " + sortCountArray.get(i) + " ("
-                    + arrayFrequency(randomArray, countArray.get(i)) + ")" + "\n";
+                    + listFrequency(randomArray, countArray.get(i)) + ")" + "\n";
         }
 
         return getResult;
@@ -183,14 +183,14 @@ public class Q2 {
         // 2. randomList 를 선언하여 입력받은 숫자 N의 데이터들 (중복 되는 데이터 또한 포함) 모두 포함하여 저장한다.
         // 3. isContains 를 선언하여 randomList 내에 있는 데이터들과 모두 값을 비교한 후, 중복되는 값만 따로 저장한다.
         String result = ""; // 결과 값을 저장한다.
-        int randomValue = 20; // 랜덤 길이는 20으로 설정한다.
         int printValue = 5; // 출력할 개수를 정한다.
 
         String loopResult = ""; // RandomList 에서 뽑아온 값을 출력한다.
         // int countValue = 0; // 여러 번 나오는 수의 빈도 값을 저장한다.
 
         // int temp = 0;
-        int[] temp = new int[randomValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
+        // 랜덤 길이는 사용자가 입력한 배열의 길이로 결정된다.
+        int[] temp = new int[getValue]; // 랜덤 길이 만큼 숫자 범위 11 ~ 99의 랜덤 수(난수)들을 넘겨 받는다.
         // List<Integer> randomList = new ArrayList<Integer>(); // temp 배열의 값을 저장한다.
         // List<Integer> randomList = Arrays.asList();
         // List<Integer> countList = new ArrayList<Integer>(); // 중복을 제거한 값들을 countList
