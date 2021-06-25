@@ -30,7 +30,8 @@ public class Q2 {
     public static boolean isContains(List<Integer> countList, int temp) {
         boolean isContainValue = false;
 
-        for (int i = 0; i < countList.size(); i++) {
+        int countListSize = countList.size();
+        for (int i = 0; i < countListSize; i++) {
             if (countList.get(i) == temp) {
                 isContainValue = true;
                 return isContainValue;
@@ -45,7 +46,8 @@ public class Q2 {
     public static int listFrequency(List<Integer> randomList, int number) {
         int count = 0;
 
-        for (int i = 0; i < randomList.size(); i++) {
+        int randomListSize = randomList.size();
+        for (int i = 0; i < randomListSize; i++) {
             if (randomList.get(i) == number) {
                 count++;
             }
@@ -81,7 +83,8 @@ public class Q2 {
     public static String printRandomList(List<Integer> randomList) {
         String loopResult = "";
 
-        for (int i = 0; i < randomList.size(); i++) {
+        int randomListSize = randomList.size();
+        for (int i = 0; i < randomListSize; i++) {
             loopResult += randomList.get(i) + " ";
         }
 
@@ -94,7 +97,8 @@ public class Q2 {
         List<Integer> countList = new ArrayList<Integer>();
         out.print(countList);
 
-        for (int i = 0; i < randomList.size(); i++) {
+        int randomListSize = randomList.size();
+        for (int i = 0; i < randomListSize; i++) {
             // 중복 값이 모두 포함된 randomList 리스트를 돌면서, countList 와 randomList 의 값을 비교를 한다.
             // 만약 중복되지 않은 값을 찾았을 때(또는 중복 수가 맨 처음 등장한 값의 위치를 찾았을 때)
             // 중복 값이 포함되지 않은 countList 에 중복되지 않은 값(특정 중복되는 수는 딱 한 번만 추가)을 추가한다.
@@ -117,8 +121,9 @@ public class Q2 {
 
         // countList 의 이전 값과 countList 의 다음 값을 각각 currentValue(currentCount),
         // nextValue(nextCount) 에 저장한 후, currentCount 의 값과 nextCount 을 비교해서 정렬한다.
-        for (int i = 0; i < countList.size(); i++) {
-            for (int j = i + 1; j < countList.size(); j++) {
+        int countListSize = countList.size();
+        for (int i = 0; i < countListSize; i++) {
+            for (int j = i + 1; j < countListSize; j++) {
                 currentValue = countList.get(i);
                 nextValue = countList.get(j);
 
